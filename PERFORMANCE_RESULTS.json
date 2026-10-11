@@ -1,0 +1,251 @@
+{
+  "date": "2026-10-11",
+  "browser": "153.0.8010.0",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "settings": {
+        "name": "desktop",
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "cpu": 1,
+        "latency": 0,
+        "download": -1,
+        "upload": -1
+      },
+      "runs": [
+        {
+          "run": 1,
+          "FCP_ms": 164,
+          "LCP_ms": 164,
+          "CLS_load": 0,
+          "CLS_including_interactions": 0,
+          "maxEventDuration_ms": 32,
+          "maxClickToSecondAnimationFrame_ms": 28.2,
+          "longTaskDurations_ms": [],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "FCP_ms": 72,
+          "LCP_ms": 72,
+          "CLS_load": 0,
+          "CLS_including_interactions": 0,
+          "maxEventDuration_ms": 24,
+          "maxClickToSecondAnimationFrame_ms": 28.8,
+          "longTaskDurations_ms": [],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        },
+        {
+          "run": 3,
+          "FCP_ms": 56,
+          "LCP_ms": 56,
+          "CLS_load": 0,
+          "CLS_including_interactions": 0,
+          "maxEventDuration_ms": 24,
+          "maxClickToSecondAnimationFrame_ms": 29.4,
+          "longTaskDurations_ms": [],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "settings": {
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "cpu": 4,
+        "latency": 150,
+        "download": 200000,
+        "upload": 93750
+      },
+      "runs": [
+        {
+          "run": 1,
+          "FCP_ms": 1040,
+          "LCP_ms": 1040,
+          "CLS_load": 0,
+          "CLS_including_interactions": 0,
+          "maxEventDuration_ms": 112,
+          "maxClickToSecondAnimationFrame_ms": 98.7,
+          "longTaskDurations_ms": [
+            77,
+            92,
+            50
+          ],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "FCP_ms": 936,
+          "LCP_ms": 936,
+          "CLS_load": 0.004868356968463168,
+          "CLS_including_interactions": 0.004868356968463168,
+          "maxEventDuration_ms": 104,
+          "maxClickToSecondAnimationFrame_ms": 90.9,
+          "longTaskDurations_ms": [
+            90,
+            68,
+            65
+          ],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        },
+        {
+          "run": 3,
+          "FCP_ms": 960,
+          "LCP_ms": 960,
+          "CLS_load": 0,
+          "CLS_including_interactions": 0,
+          "maxEventDuration_ms": 112,
+          "maxClickToSecondAnimationFrame_ms": 110.4,
+          "longTaskDurations_ms": [
+            73,
+            88,
+            66
+          ],
+          "network": [
+            {
+              "name": "",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": null,
+              "wireBytes": 791
+            },
+            {
+              "name": "index-BmPYtd6g.css",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 5924
+            },
+            {
+              "name": "index-VVUrvowZ.js",
+              "diskCache": false,
+              "serviceWorker": false,
+              "encoding": "gzip",
+              "wireBytes": 83815
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "validation": "passed: required, decimal, text, zero, whitespace, unsafe integer, min/max date",
+  "dialogs": "none; focus trapping and restoration not applicable",
+  "runtimeErrors": []
+}

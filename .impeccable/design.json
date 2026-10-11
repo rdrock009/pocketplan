@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T08:22:11.511432+00:00",
+  "title": "Design System: Budget Lab",
+  "extensions": {
+    "motion": [
+      {
+        "name": "control-feedback",
+        "value": "160ms ease-out",
+        "purpose": "Colour-only hover feedback; disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack-overview",
+        "value": "1050px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      },
+      {
+        "name": "stack-scenario",
+        "value": "850px"
+      },
+      {
+        "name": "comparison-rows",
+        "value": "600px"
+      },
+      {
+        "name": "compact-header",
+        "value": "360px"
+      }
+    ],
+    "shadows": []
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Commit an entry.",
+      "html": "<button class=\"ds-primary\">Add expense</button>",
+      "css": ".ds-primary{background:var(--green,#17654c);color:white;min-height:44px;padding:10px 16px;border:1px solid #17654c;border-radius:7px;font:600 .875rem system-ui;transition:background-color 160ms ease-out}.ds-primary:hover{background:#0e4c38}.ds-primary:focus-visible{outline:3px solid #347962;outline-offset:3px}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Settle a bill or start fresh.",
+      "html": "<button class=\"ds-secondary\">Pay remaining</button>",
+      "css": ".ds-secondary{background:white;color:#182c29;min-height:44px;padding:10px 16px;border:1px solid #aebfb5;border-radius:7px;font:600 .875rem system-ui}.ds-secondary:hover{background:#eaf2ed}.ds-secondary:active{background:#d9e9df}.ds-secondary:focus-visible{outline:3px solid #347962;outline-offset:3px}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "description": "A reversible action on a record.",
+      "html": "<button class=\"ds-text\">Receive now</button>",
+      "css": ".ds-text{background:none;color:#17654c;min-height:44px;padding:8px 2px;border:0;font:650 .8125rem system-ui}.ds-text:hover{text-decoration:underline;text-underline-offset:.2em}.ds-text:focus-visible{outline:3px solid #347962;outline-offset:3px}"
+    },
+    {
+      "name": "Text input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Explicitly labelled data entry.",
+      "html": "<label class=\"ds-label\">Name<input class=\"ds-input\" placeholder=\"e.g. Lunch\"></label>",
+      "css": ".ds-label{display:grid;gap:6px;font:600 .875rem system-ui;color:#182c29}.ds-input{background:white;color:#182c29;min-height:44px;padding:9px 12px;border:1px solid #aebfb5;border-radius:7px;font:400 1rem system-ui;caret-color:#17654c}.ds-input::placeholder{color:#65776e}.ds-input:hover{border-color:#17654c}.ds-input:focus-visible{outline:3px solid #347962;outline-offset:3px}"
+    },
+    {
+      "name": "Category navigation",
+      "kind": "nav",
+      "description": "Switch the form and records together.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Entry types\"><button aria-pressed=\"false\">Income</button><button aria-pressed=\"true\">Expenses</button></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:6px}.ds-nav button{min-height:44px;border:0;border-radius:7px;background:none;color:#566862;padding:10px 14px;font:600 .875rem system-ui}.ds-nav button:hover{background:#e5ece7}.ds-nav button[aria-pressed=true]{background:#dcecdf;color:#1d5239}.ds-nav button:focus-visible{outline:3px solid #347962;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "overview": "My Month is a restrained operating workspace that extends the starter\u2019s green accent and light surfaces.",
+    "keyCharacteristics": [
+      "Explicit accounting",
+      "Inline forms",
+      "Dated forecasts",
+      "Textual health reasons"
+    ],
+    "dos": [
+      "Do keep every calculated figure connected to the same engine snapshot.",
+      "Do label sample entries and explain forecast assumptions.",
+      "Do preserve native form affordances, explicit labels, and visible focus."
+    ],
+    "donts": [
+      "Don\u2019t use colour alone to communicate month health.",
+      "Clearly report local save status and recovery; temporary previews never persist."
+    ]
+  }
+}
