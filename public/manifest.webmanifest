@@ -1,0 +1,17 @@
+{
+  "name": "PocketPlan — Personal Month Budget & Decision Lab",
+  "short_name": "PocketPlan",
+  "description": "Plan your 30-day month with income, spending, bills, savings, and explainable forecasts.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#17654c",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

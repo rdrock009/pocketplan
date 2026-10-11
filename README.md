@@ -252,14 +252,18 @@ TypeScript enables strict mode, checked indexed access, exact optional property 
 
 ```text
 src/
+  components/    Modular UI components (Header, OverviewSection, ForecastChart, Amount, ErrorBoundary)
+  constants/     Core application constants and configuration
   finance/       Typed model, money/date utilities, pure engine, tests
+  hooks/         Custom React hooks (useTheme)
   month/         My Month forms, records, sample data, state, tests
-  whatif/        Scenarios, comparisons, preview/apply/undo state, tests
   persistence/   Storage validation, recovery, React hook, tests
-  App.tsx        Shared workspace and navigation
+  types/         Centralized TypeScript type definitions
+  whatif/        Scenarios, comparisons, preview/apply/undo state, tests
+  App.tsx        Shared workspace layout and navigation coordinator
   App.test.tsx   Application interaction tests
-  index.css      Tailwind import and interface styles
-  main.tsx       React entry point
+  index.css      Tailwind import and accessible design system styles
+  main.tsx       React entry point with ErrorBoundary
 ```
 
 Further documentation:
@@ -269,6 +273,11 @@ Further documentation:
 - [QA.md](QA.md): functional and interface checks.
 - [VALIDATION_REPORT.md](VALIDATION_REPORT.md): detailed results and qualifications.
 - [PERFORMANCE_RESULTS.json](PERFORMANCE_RESULTS.json): performance measurements.
+- [CONTRIBUTING.md](CONTRIBUTING.md): development guidelines and PR workflow.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): community standards.
+- [SECURITY.md](SECURITY.md): security reporting and offline privacy guarantees.
+- [CHANGELOG.md](CHANGELOG.md): version history and release notes.
+- [LICENSE](LICENSE): MIT License.
 
 ## Commands and tests
 
@@ -405,6 +414,6 @@ Create a valid preview. Draft edits and successful My Month changes invalidate p
 
 ## Contributing and license
 
-Keep financial calculations in the pure engine and derive displayed values from shared state. Add meaningful tests for accounting, scenario, and persistence changes, and run the verification commands before proposing changes.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines. Keep financial calculations in the pure engine and derive displayed values from shared state.
 
-No license file is currently included. Add an explicit license before describing the repository as open source or granting reuse permissions.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

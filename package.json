@@ -1,7 +1,25 @@
 {
   "name": "budget-lab",
+  "version": "1.1.0",
+  "description": "pocketplan - personal finance planning, decision comparison, and cash flow forecast for a 30-day month",
+  "author": "Raktim Das <raktim99.rd@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rdrock009/pocketplan.git"
+  },
+  "keywords": [
+    "finance",
+    "budget",
+    "cashflow",
+    "forecasting",
+    "what-if",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss"
+  ],
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "engines": {
     "node": "^22.13.0 || ^24.0.0 || >=26.0.0"

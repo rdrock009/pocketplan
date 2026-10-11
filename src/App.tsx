@@ -1,4 +1,4 @@
-import { memo, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { calculateFinancials, initialSnapshotDate, isoDate } from './finance'
 import type { EntryKind } from './month/entries'
 import { entryNames } from './month/entries'
@@ -9,75 +9,10 @@ import { monthReducer, SAMPLE_START } from './month/state'
 import type { MonthAction } from './month/state'
 import { useLocalWorkspace } from './persistence/useLocalWorkspace'
 import { useTheme } from './hooks'
-import { Amount, ForecastChart } from './components'
+import { Amount, ForecastChart, Header, OverviewSection } from './components'
 import { WhatIf } from './whatif/WhatIf'
 
 const entryKinds: EntryKind[] = ['income', 'expense', 'commitment', 'subscription', 'savings']
-
-/** Sun icon for light mode toggle */
-function SunIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-  )
-}
-
-/** Moon icon for dark mode toggle */
-function MoonIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-    </svg>
-  )
-}
-
-/** Memoized overview section to prevent re-renders on unrelated state changes */
-const OverviewSection = memo(function OverviewSection({ snapshot, state, healthLabel }: {
-  snapshot: ReturnType<typeof calculateFinancials>
-  state: ReturnType<typeof useLocalWorkspace>['workspace']['month']
-  healthLabel: string
-}) {
-  return (
-    <section className="overview" aria-labelledby="overview-title">
-      <div className="overview-main">
-        <div className="section-heading">
-          <h2 id="overview-title">Room to spend</h2>
-          <span data-testid="days-remaining">{snapshot.daysRemaining} days left</span>
-        </div>
-        <dl className="money-strip">
-          <div><dt>Cash balance</dt><dd><Amount value={snapshot.cashBalance} id="cash-balance" /></dd></div>
-          <div><dt>Free after reserves</dt><dd><Amount value={snapshot.spendableCash} id="spendable-cash" /></dd></div>
-          <div className="allowance"><dt>Safe daily allowance</dt><dd><Amount value={snapshot.dailyAllowance} id="daily-allowance" /><span className="per-day"> / day</span></dd></div>
-        </dl>
-        <p className="allowance-note">{snapshot.daysRemaining === 0 ? 'Your month is complete. The forecast settles any outstanding reserves.' : 'Your daily allowance protects unpaid bills and savings targets. It uses confirmed cash only.'}</p>
-        <details className="breakdown"><summary>How your available money is calculated</summary>
-          <dl>
-            <div><dt>Starting cash</dt><dd>{money(state.plan.openingCash)}</dd></div>
-            <div><dt>Received income</dt><dd><Amount value={snapshot.receivedIncome} id="received-income" /></dd></div>
-            <div><dt>Expenses paid</dt><dd><Amount value={snapshot.expensesPaid} id="expenses-paid" /></dd></div>
-            <div><dt>Net deposits into savings</dt><dd><Amount value={snapshot.netSavingsDeposits} id="net-savings" /></dd></div>
-            <div><dt>Unpaid bills reserved</dt><dd><Amount value={snapshot.obligationReserve} id="bill-reserve" /></dd></div>
-            <div><dt>Unfunded savings reserved</dt><dd><Amount value={snapshot.savingsReserve} id="savings-reserve" /></dd></div>
-          </dl>
-          <p className="fine-print">Cash = starting cash + received income − expenses − net savings deposits. Free cash = cash − bill reserves − savings reserves.</p>
-        </details>
-      </div>
-      <aside className={`health health-${snapshot.health.state}`} aria-labelledby="health-title">
-        <div className="section-heading">
-          <h2 id="health-title">Month health</h2>
-          <span className="health-badge" data-testid="health-state">{healthLabel}</span>
-        </div>
-        <ul>{snapshot.health.reasons.map(reason => <li key={reason.code}>{reason.message}{reason.amount > 0 && <strong> {money(reason.amount)}</strong>}</li>)}</ul>
-        <p className="fine-print">Based on your entries and the forecast assumptions below.</p>
-      </aside>
-    </section>
-  )
-})
 
 export default function App() {
   const { workspace, dispatch, saveStatus, recoveryMessage } = useLocalWorkspace()
@@ -117,33 +52,29 @@ export default function App() {
     return valid
   }
 
+  const handleExport = () => {
+    try {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(workspace, null, 2))
+      const downloadAnchor = document.createElement('a')
+      downloadAnchor.setAttribute('href', dataStr)
+      downloadAnchor.setAttribute('download', `pocketplan-backup-${workspace.month.plan.startDate}.json`)
+      document.body.appendChild(downloadAnchor)
+      downloadAnchor.click()
+      downloadAnchor.remove()
+    } catch {
+      /* ignore */
+    }
+  }
+
   return <>
     <a className="skip-link" href="#main">Skip to main content</a>
-    <header className="app-bar">
-      <div className="bar-inner">
-        <a className="brand" href="#main" aria-label="PocketPlan home">
-          <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-            <rect x="2" y="2" width="24" height="24" rx="7" fill="currentColor" />
-            <path d="M9 9h10M9 14h7M9 19h4" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          PocketPlan
-        </a>
-        <div className="bar-actions">
-          <nav className="workspace-nav" aria-label="Workspace">
-            <button type="button" aria-controls="month-view" aria-pressed={surface === 'month'} onClick={() => setSurface('month')}>My Month</button>
-            <button type="button" aria-controls="whatif-view" aria-pressed={surface === 'what-if'} onClick={() => setSurface('what-if')}>What If</button>
-          </nav>
-          <button
-            type="button"
-            className="theme-toggle"
-            aria-label={`Switch to ${effectiveTheme === 'dark' ? 'light' : 'dark'} mode`}
-            onClick={() => setTheme(effectiveTheme === 'dark' ? 'light' : 'dark')}
-          >
-            {effectiveTheme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-        </div>
-      </div>
-    </header>
+    <Header
+      surface={surface}
+      setSurface={setSurface}
+      effectiveTheme={effectiveTheme}
+      setTheme={setTheme}
+      onExport={handleExport}
+    />
 
     <main id="main" className="page" tabIndex={-1}>
       <div className="page-heading">
